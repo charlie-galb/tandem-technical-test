@@ -20,14 +20,14 @@ const BusCardList = (props: Props) => {
     const filteredBuses = filterNonOperationalRoutes(buses);
 
   return (
-    <div>
-        <div>
+    <div className='Card_List_Container'>
+        <div className='Card_List_Header'>
           Live bus times for <b>Park Road</b>
         </div>
-        <ul>
+        <ul className='Card_List'>
             {filteredBuses?.map((bus) => {
                 return (
-                    <li key={bus.id} >
+                    <li className='Card_List_Item' key={bus.id} >
                         <BusCard bus={bus} />
                     </li>
                 )

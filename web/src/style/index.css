@@ -17,13 +17,10 @@ body {
   width: 440px;
   border-radius: 6px;
   border: 1px solid #d7d7d7;
+  margin-top: 2%;
   padding: 16px 24px;
   display: flex;
   flex-direction: column;
-}
-
-.Card__Header {
-  font-size: 20px;
 }
 
 .Card__Details {
@@ -31,3 +28,34 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+.Card__Header {
+  font-size: 20px;
+}
+
+.Card_List {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+}
+
+.Card_List_Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Card_List_Header {
+
+}
+
+.Card_List_Item {
+
+}
+
+
+
+
