@@ -10,7 +10,7 @@ describe('getBusTimes', () => {
 
     it('returns bus times with all the necessary attributes', () => {
 
-        const busTime = service.getBusTimes()[0]
+        const busTime = service.getBusTimes()[0];
 
         expect(busTime.id).not.toBeNull();
         expect(busTime.busId).not.toBeNull();

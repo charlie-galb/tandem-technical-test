@@ -1,38 +1,38 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-import BusCardList from './components/BusCardList/BusCardList';
-import BusDto from './types/BusDto';
+import BusCardList from "./components/BusCardList/BusCardList";
+import BusDto from "./types/BusDto";
 
 const App = () => {
-  const [buses, setBuses] = useState<BusDto[]>([])
+  const [buses, setBuses] = useState<BusDto[]>([]);
 
   // Call api when first load
   useEffect(() => {
     fetchBusTimes();
-  }, [])
+  }, []);
 
   // After, every five seconds to call api
   useEffect(() => {
     const interval = setInterval(async () => {
-        await fetchBusTimes();
+      await fetchBusTimes();
     }, 10000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [])
+  }, []);
 
   const fetchBusTimes = async () => {
-     try {
-        const res = await axios.get('/bus-times');
-        const busList: BusDto[] = res.data
-        setBuses(busList);
+    try {
+      const res = await axios.get("/bus-times");
+      const busList: BusDto[] = res.data;
+      setBuses(busList);
     } catch (e) {
-        console.log(e);
+      console.log(e);
     }
-  }
+  };
 
   return (
     <div className="App">
