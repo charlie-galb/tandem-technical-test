@@ -23,4 +23,8 @@ API - Node.js TypeScript application accessible at http://localhost:3000. Genera
 
 ## Additional Improvements  
 
+I have implemented a search bar to enable users to search for specific buses. With the current backend implementation (three routes and a maximum of five times with randomly-generated data), this is not strictly necessary, but with live data (see point below) it could prove very useful for users looking for a specific bus as some stops have a very large number routes. It could also be extended to allow users to search by destination instead of bus number. 
 
+In terms of ideas for extending the application further, my first thought would be to try and tap into real data by integrating TFL's Bus Arrivals API. This would enable us to add more stops and routes and to implement features like real-time bus tracking or SMS notifications when a chosen bus is X minutes away. 
+
+On the client side, I would also like to implement some kind of colour-grading on the bus cards to signal how close they are to arriving (i.e. green for due, yellow for within five minutes), which would be a simple way to add clarity and a bit more personality to the UI. 
