@@ -7,29 +7,28 @@ import BusDto from './types/BusDto'
 
 const App = () => {
   const [buses, setBuses] = useState<BusDto[]>([])
-  const [timeInterval, setTimeInterval] = useState(0);
 
-// Call api when first load
-useEffect(() => {
-  fetchBusTimes();
-}, [])
+  // Call api when first load
+  useEffect(() => {
+    fetchBusTimes();
+  }, [])
 
-// After, every five seconds to call api
-useEffect(() => {
-  const interval = setInterval(async () => {
-      await fetchBusTimes();
-  }, 10000);
+  // After, every five seconds to call api
+  useEffect(() => {
+    const interval = setInterval(async () => {
+        await fetchBusTimes();
+    }, 10000);
 
-  return () => {
-    clearInterval(interval);
-  };
-}, [])
+    return () => {
+      clearInterval(interval);
+    };
+  }, [])
 
   const fetchBusTimes = async () => {
      try {
         const res = await axios.get('/bus-times');
         const busList: BusDto[] = res.data
-        setBuses(busList)
+        setBuses(busList);
     } catch (e) {
         console.log(e);
     }
