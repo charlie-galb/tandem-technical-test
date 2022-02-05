@@ -18,7 +18,7 @@ useEffect(() => {
 useEffect(() => {
   const interval = setInterval(async () => {
       await fetchBusTimes();
-  }, 1000);
+  }, 10000);
 
   return () => {
     clearInterval(interval);
