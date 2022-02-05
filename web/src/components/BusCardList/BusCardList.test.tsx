@@ -32,15 +32,20 @@ describe('BusCardList', () => {
         jest.useRealTimers();
     });
 
-    it('Should display all operational bus routes', () => {
+    it('Should display all operational bus routes in order of arrival', () => {
         jest.setSystemTime(new Date(2022, 2, 5));
-        const component = render(<BusCardList buses={testBuses} />)
-        expect(screen.getAllByRole('listitem').length).toEqual(2)
+        expect(testBuses[0].minutesUntilArrival).toEqual(4);
+        expect(testBuses[1].minutesUntilArrival).toEqual(2);
+        render(<BusCardList buses={testBuses} />);
+        const busNodes = screen.getAllByRole('listitem');
+        expect(busNodes.length).toEqual(2);
+        expect(busNodes[0]).toHaveTextContent('2 mins');
+        expect(busNodes[1]).toHaveTextContent('4 mins');
     });
 
     it('Should not display non-operational bus routes', () => {
         jest.setSystemTime(new Date(2022, 2, 9));
-        const component = render(<BusCardList buses={testBuses} />)
+        render(<BusCardList buses={testBuses} />)
         expect(screen.getAllByRole('listitem').length).toEqual(1)
     })
 

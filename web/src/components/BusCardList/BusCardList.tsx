@@ -11,13 +11,21 @@ const BusCardList = (props: Props) => {
 
     const { buses } = props
 
+    const processBuses = (unprocessedBusList: BusDto[]) => {
+        if (unprocessedBusList) {
+            return filterNonOperationalRoutes(unprocessedBusList).sort(compareBusesByMinutesToArrival);
+        } 
+    };
+
+    const compareBusesByMinutesToArrival = (busA: BusDto, busB: BusDto) => {
+        return busA.minutesUntilArrival - busB.minutesUntilArrival;
+      };
+
     const filterNonOperationalRoutes = (unfilteredBusList: BusDto[]) => {
         const date = new Date();
         const day = date.getDay()
-        return unfilteredBusList?.filter(bus => !bus.nonOperationalDays.includes(day));
+        return unfilteredBusList.filter(bus => !bus.nonOperationalDays.includes(day));
       }
-    
-    const filteredBuses = filterNonOperationalRoutes(buses);
 
   return (
     <div className='Card_List_Container'>
@@ -25,7 +33,7 @@ const BusCardList = (props: Props) => {
           Live bus times for <b>Park Road</b>
         </div>
         <ul className='Card_List'>
-            {filteredBuses?.map((bus) => {
+            {processBuses(buses)?.map((bus) => {
                 return (
                     <li className='Card_List_Item' key={bus.id} >
                         <BusCard bus={bus} />
