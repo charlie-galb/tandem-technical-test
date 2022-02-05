@@ -11,6 +11,7 @@ const SearchBar = (props: Props) => {
   placeholder='Search by bus number'
   onChange={event => setQuery(event.target.value)}
   data-testid='search-bar-input'
+  className='Card_List_Searchbar'
   />
   );
 };

@@ -45,7 +45,9 @@ const BusCardList = (props: Props) => {
         <div className='Card_List_Header'>
           Live bus times for <b>Park Road</b>
         </div>
-        <SearchBar setQuery={setSearchQuery} />
+        <SearchBar
+        setQuery={setSearchQuery} 
+        />
         <ul className='Card_List'>
             {processBuses(buses)?.map((bus) => {
                 return (
