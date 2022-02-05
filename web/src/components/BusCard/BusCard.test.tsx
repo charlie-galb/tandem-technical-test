@@ -10,6 +10,13 @@ const testBus = {
     minutesUntilArrival: 4,
 }
 
+const testBusDue = {
+    id: 1,
+    busId: 2,
+    destination: 'Test Road',
+    minutesUntilArrival: 1,
+}
+
 describe('BusCard', () => {
 
     it('Should render the bus time data properly', () => {
@@ -17,6 +24,11 @@ describe('BusCard', () => {
         expect(screen.getByTestId('bus-number').innerHTML).toBe(String(testBus.busId))
         expect(screen.getByTestId('bus-destination').innerHTML).toBe(testBus.destination)
         expect(screen.getByTestId('bus-mins-to-arrival').innerHTML).toBe(`${testBus.minutesUntilArrival} mins`)
+    })
+
+    it('Should render minutesUntilArrival as "due" if the value is one or below', () => {
+        render(<BusCard bus={testBusDue} />)
+        expect(screen.getByTestId('bus-mins-to-arrival').innerHTML).toBe(`Due`)
     })
 
 })

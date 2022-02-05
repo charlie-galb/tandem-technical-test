@@ -10,6 +10,11 @@ const BusCard = (props: Props) => {
     const { bus } = props
     const { busId, destination, minutesUntilArrival } = bus
 
+    const returnArrivalNotice = (mins: number) => {
+      const notice = mins > 1 ? `${mins} mins` : 'Due'
+      return notice
+    }
+
     return (
         <div className="Card">
           <div className="Card__Header">
@@ -17,7 +22,7 @@ const BusCard = (props: Props) => {
           </div>
           <div className="Card__Details">
             <div data-testid='bus-destination'>{destination}</div>
-            <div data-testid='bus-mins-to-arrival'>{minutesUntilArrival} mins</div>
+            <div data-testid='bus-mins-to-arrival'>{returnArrivalNotice(minutesUntilArrival)}</div>
           </div>
         </div>
     )
