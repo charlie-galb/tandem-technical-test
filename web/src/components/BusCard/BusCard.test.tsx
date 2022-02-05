@@ -1,20 +1,23 @@
 import React from "react";
 import { render, screen } from '@testing-library/react'
 
+import BusDto from '../../types/BusDto';
 import BusCard from './BusCard'
 
-const testBus = {
+const testBus: BusDto = {
     id: 1,
     busId: 2,
     destination: 'Test Road',
     minutesUntilArrival: 4,
+    nonOperationalDays: [3],
 }
 
-const testBusDue = {
+const testBusDue:BusDto = {
     id: 1,
     busId: 2,
     destination: 'Test Road',
     minutesUntilArrival: 1,
+    nonOperationalDays: [4],
 }
 
 describe('BusCard', () => {
