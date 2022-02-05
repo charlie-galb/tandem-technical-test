@@ -1,9 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
-import BusCardList from './components/BusCardList/BusCardList'
-import BusDto from './types/BusDto'
+import BusCardList from './components/BusCardList/BusCardList';
+import BusDto from './types/BusDto';
 
 const App = () => {
   const [buses, setBuses] = useState<BusDto[]>([])
