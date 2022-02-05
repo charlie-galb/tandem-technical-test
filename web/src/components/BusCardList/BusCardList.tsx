@@ -10,7 +10,14 @@ interface Props {
 const BusCardList = (props: Props) => {
 
     const { buses } = props
-    console.log(buses)
+
+    const filterNonOperationalRoutes = (unfilteredBusList: BusDto[]) => {
+        const date = new Date();
+        const day = date.getDay()
+        return unfilteredBusList?.filter(bus => !bus.nonOperationalDays.includes(day));
+      }
+    
+    const filteredBuses = filterNonOperationalRoutes(buses);
 
   return (
     <div>
@@ -18,7 +25,7 @@ const BusCardList = (props: Props) => {
           Live bus times for <b>Park Road</b>
         </div>
         <ul>
-            {buses.map((bus, idx) => {
+            {filteredBuses?.map((bus) => {
                 return (
                     <li key={bus.id} >
                         <BusCard bus={bus} />
