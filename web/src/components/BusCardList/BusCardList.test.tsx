@@ -7,14 +7,14 @@ const testBus1 = {
     id: 1,
     busId: 111,
     destination: 'Test Road',
-    minutesToArrival: 4,
+    minutesUntilArrival: 4,
 }
 
 const testBus2 = {
     id: 2,
     busId: 222,
     destination: 'Mock Avenue',
-    minutesToArrival: 2,
+    minutesUntilArrival: 2,
 }
 
 const testBuses = [testBus1, testBus2]

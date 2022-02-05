@@ -2,7 +2,7 @@ type BusDto = {
     id: number,
     busId: number,
     destination: string,
-    minutesToArrival: number,
+    minutesUntilArrival: number,
 }
 
 export default BusDto

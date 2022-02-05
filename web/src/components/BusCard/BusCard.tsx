@@ -8,7 +8,7 @@ interface Props {
 
 const BusCard = (props: Props) => {
     const { bus } = props
-    const { busId, destination, minutesToArrival } = bus
+    const { busId, destination, minutesUntilArrival } = bus
 
     return (
         <div className="Card">
@@ -17,7 +17,7 @@ const BusCard = (props: Props) => {
           </div>
           <div className="Card__Details">
             <div data-testid='bus-destination'>{destination}</div>
-            <div data-testid='bus-mins-to-arrival'>{minutesToArrival} mins</div>
+            <div data-testid='bus-mins-to-arrival'>{minutesUntilArrival} mins</div>
           </div>
         </div>
     )

@@ -10,17 +10,23 @@ interface Props {
 const BusCardList = (props: Props) => {
 
     const { buses } = props
+    console.log(buses)
 
   return (
-    <ul>
-        {buses?.map((bus, idx) => {
-            return (
-                <li key={bus.id} >
-                    <BusCard bus={bus} />
-                </li>
-            )
-        })}
-    </ul>
+    <div>
+        <div>
+          Live bus times for <b>Park Road</b>
+        </div>
+        <ul>
+            {buses.map((bus, idx) => {
+                return (
+                    <li key={bus.id} >
+                        <BusCard bus={bus} />
+                    </li>
+                )
+            })}
+        </ul>
+    </div>
   )
 };
 
