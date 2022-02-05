@@ -10,8 +10,6 @@ const BusCard = (props: Props) => {
     const { bus } = props
     const { busId, destination, minutesToArrival } = bus
 
-    console.log(bus)
-
     return (
         <div className="Card">
           <div className="Card__Header">
@@ -19,7 +17,7 @@ const BusCard = (props: Props) => {
           </div>
           <div className="Card__Details">
             <div data-testid='bus-destination'>{destination}</div>
-            <div data-testid='bus-mins-to-arrival'>{minutesToArrival}</div>
+            <div data-testid='bus-mins-to-arrival'>{minutesToArrival} mins</div>
           </div>
         </div>
     )
