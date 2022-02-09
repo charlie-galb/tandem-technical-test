@@ -25,7 +25,7 @@ API - Node.js TypeScript application accessible at http://localhost:3000. Genera
 
 I have implemented a search bar to enable users to search for specific buses. With the current backend implementation (three routes and a maximum of five times with randomly-generated data), this is not strictly necessary, but with live data (see point below) it could prove very useful for users looking for a specific bus as some stops have a very large number routes. It could also be extended to allow users to search by destination instead of bus number. 
 
-As a kind of spike, I have implemented event-driven bus time updates pushed from the server side on a [separate branch](https://github.com/charlie-galb/tandem-technical-test/tree/server_sent_events). This design should be faster, especially at scale.
+As a kind of spike, I have implemented bus time updates as events pushed from the server side on a [separate branch](https://github.com/charlie-galb/tandem-technical-test/tree/server_sent_events). This design should be faster, especially at scale, although the downside is that there could be issues with browser compatibility.
 
 In terms of ideas for extending the application further, my first thought would be to try and tap into real data by integrating TFL's Bus Arrivals API. This would enable us to add more stops and routes and to implement features like real-time bus tracking or SMS notifications when a chosen bus is X minutes away. 
 
