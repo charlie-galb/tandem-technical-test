@@ -13,26 +13,29 @@ const App = () => {
     fetchBusTimes();
   }, []);
 
-  // After, every five seconds to call api
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      await fetchBusTimes();
-    }, 10000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   const fetchBusTimes = async () => {
     try {
       const res = await axios.get("/bus-times");
       const busList: BusDto[] = res.data;
+      console.log('Fetched bus times on mount')
       setBuses(busList);
     } catch (e) {
       console.log(e);
     }
   };
+
+  useEffect(() => {
+    const eventSource = new EventSource(`/bus-times-events`);
+    eventSource.onmessage = (event) => updateBusTimes(event.data);
+    return () => {
+      eventSource.close();
+    };
+  }, []);
+
+  const updateBusTimes = ((data: string) => {
+    const parsedData = JSON.parse(data);
+    setBuses(parsedData);
+  });
 
   return (
     <div className="App">
